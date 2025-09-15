@@ -496,4 +496,5 @@ app.post("/verify-payment", (req, res) => {
 });
 
 
-app.listen(5000,()=>console.log("Backend server runs on 5000 port"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

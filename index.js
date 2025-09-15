@@ -141,64 +141,59 @@ app.post('/registration', async (req, res) => {
 
 
 // admin registration
-app.post('/adminregistration',(req,res)=>{
-  const {email,password}=req.body
-  const data=[
-    String(email),
-    String(password)
-  ]
+// app.post('/adminregistration',(req,res)=>{
+//   const {email,password}=req.body
+//   const data=[
+//     String(email),
+//     String(password)
+//   ]
   
-  const querry=`select * from admin_user where email=? and password=?;`
-  db.query(querry,data,(err,results)=>{
-    if (err) console.log(err);
-    if(results.length>0){
-      res.json({"msg":"Admin User already exist!!"})
-    }
-    else{
-      const store_data='insert into admin_user(email,password)values(?,?)'
-      db.query(store_data,data,(err,results)=>{
-        if(err) console.log(err);
-        else{
-          res.json({"msg":"Admin Registered successfully !!"})
-        }
-      })
-    }
+//   const querry=`select * from admin_user where email=? and password=?;`
+//   db.query(querry,data,(err,results)=>{
+//     if (err) console.log(err);
+//     if(results.length>0){
+//       res.json({"msg":"Admin User already exist!!"})
+//     }
+//     else{
+//       const store_data='insert into admin_user(email,password)values(?,?)'
+//       db.query(store_data,data,(err,results)=>{
+//         if(err) console.log(err);
+//         else{
+//           res.json({"msg":"Admin Registered successfully !!"})
+//         }
+//       })
+//     }
     
     
-  })
-})
+//   })
+// })
 
 // admin login logic
 
-app.post('/adminlogin',(req,res)=>{
-  const {email,password,username,role}=req.body
+// app.post('/adminlogin',(req,res)=>{
+//   const {email,password,username,role}=req.body
 
-  const data=[
-    String(email),
-    String(password),
-    String(role)
-  ]
-  const table_name=[
-    String(username)
-  ]
+//   const data=[
+//     String(email),
+//     String(password),
+//     String(role)
+//   ]
+//   const table_name=[
+//     String(username)
+//   ]
 
-  const querry=`select * from admin_user where email=? and password=?;`
-  db.query(querry,data,(err,results)=>{
-    if(err) console.log(err);
-    if(results.length>0){
-      const create_user_table='create table if not exists ??(id int auto_increment primary key ,course_name varchar(255),course_desc varchar(255),author varchar(255),price bigint,c_image varchar(255));'
-      db.query(create_user_table,table_name,(err,results)=>{
-        if(err)console.log(err);
-        else{
-          res.json({"msg1":"Login Successfully","msg2":" Admin table created Successfully",username})
-        }
-      })
-    }
-    else{
-      res.json({"msg":"Invalid Credentials !"})
-    }
-  })
-});
+//   const querry=`select * from admin_user where email=? and password=?;`
+//   db.query(querry,data,(err,results)=>{
+//     if(err) console.log(err);
+//     if(results.length>0){
+//           res.json({"msg1":"Login Successfully","msg2":" Admin table created Successfully",username})
+
+//     }
+//     else{
+//       res.json({"msg":"Invalid Credentials !"})
+//     }
+//   })
+// });
 
 //user login
 // user login

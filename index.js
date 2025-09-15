@@ -74,12 +74,13 @@ const uploadImage = async (localImagePath) => {
 app.use(express.json())
 app.use(cors())
 
-const db=mysql.createConnection({
-host:'localhost',
-user:'root',
-password:'root',
-database:'Udemy_database'
-})
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+});
+
 
 db.connect((err)=>{
     if(err)throw err
